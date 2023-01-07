@@ -1,10 +1,248 @@
+<!DOCTYPE html>
+<!--Last Changes 07/01/2023 - 19:15-->
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="css/style.css" rel="stylesheet" />
 		<title>Time Tracking Dashboard</title>
+		<meta charset="utf-8"/>
 	</head>
-	<body>
-		<!-- Meu Comentário -->
-		<h2>Time Tracking Dashboard</h2>
-	</body>
-</html>
+
+    <body onload="show_daily()">
+		<header>
+			<div class="Titulo">
+                <hr>
+				<h2><br>Time Tracking Dashboard</h2>
+			</div>
+		</header>
+
+        <section class="Avatar">
+            <div id="Foto_Avatar">
+                <img src="img/FotoPerfilRedesSociais.jpg" />
+            </div>
+            
+            <div id="Report_For">
+                <p><font size='2' face="Verdana">Report for</p>
+                <p><font size='5'face="Verdana">Bob Moreno</p><br>
+            </div>
+
+            <button style="background-color:rgb(91, 91, 230); 
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-size: 18px;
+                    width: 100px;
+                    text-align: center;
+                    padding:1px;
+                    color:rgb(12, 5, 204);
+                    border-radius: 10px;
+                    border: none;
+                    background-color: rgb(236, 228, 10);"
+                    onclick="show_daily()">Daily</button><br> 
+                    
+
+            <button style="background-color:rgb(148, 225, 14); 
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-size: 18px;
+                    width: 100px;
+                    text-align: center;
+                    padding:1px;
+                    color:rgb(12, 5, 204);
+                    border-radius: 10px;
+                    border: none;
+                    background-color: rgb(236, 228, 10);"
+                    onclick="show_weekly()">Weekly</button><br> 
+
+            <button style="background-color:rgb(91, 91, 230); 
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-size: 18px;
+                    width: 100px;
+                    text-align: center;
+                    padding:1px;
+                    color:rgb(12, 5, 204);
+                    border-radius: 10px;
+                    border: none;
+                    background-color: rgb(236, 228, 10);"
+                    onclick="show_monthly()">Monthly</button><br> 
+      
+        </section>	
+        <p id="demo"></p>
+
+    </body>
+</html> 
+        
+
+<!--   Funções para Montagem do Dashboard por Periodicidade -->
+<script>
+    // Mostra Resultados Conforme o index passado (1-Daily 2-Weekly 3-Monthly) //
+    function show_daily(){
+        var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var time = JSON.parse(this.responseText);   
+                
+                document.getElementById("demo").innerHTML = `
+
+                <section class="Work">
+                    <p><font size='4' face="Verdana">${time[0].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[0].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[0].timeframes.daily.previous}hrs</p> 
+                </section>				
+                
+                <section class="Play">
+                    <p><font size='4' face="Verdana">${time[1].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[1].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[1].timeframes.daily.previous}hrs</p> 
+                </section>	
+
+                <section class="Study">
+                    <p><font size='4' face="Verdana">${time[2].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[2].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[2].timeframes.daily.previous}hrs</p> 
+            
+                </section>	
+                
+                <section class="Exercise">
+                    <p><font size='4' face="Verdana">${time[3].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[3].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[3].timeframes.daily.previous}hrs</p> 
+                </section>	
+
+                <section class="Social">
+                    <p><font size='4' face="Verdana">${time[4].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[4].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[4].timeframes.daily.previous}hrs</p> 
+                </section>	
+                
+                <section class="SelfCare">
+                    <p><font size='4' face="Verdana">${time[5].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[5].timeframes.daily.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Day - ${time[5].timeframes.daily.previous}hrs</p> 
+                </section>
+                <br/><br/><br/><br/>
+                <hr/> 
+                <p id="header">Mentoria Conquiste Sua Vaga - Turma22 - Desafio 01<br> 
+                    Todos Direitos Reservados - 2023</p>
+             `
+            }
+            return  
+            };
+            xmlhttp.open("GET", "./json/time.json", true);
+            xmlhttp.send();        
+    }
+
+    // Mostra Resultados Semanais //
+    function show_weekly(){
+        var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var time = JSON.parse(this.responseText);   
+                
+                document.getElementById("demo").innerHTML = `
+
+                <section class="Work">
+                    <p><font size='4' face="Verdana">${time[0].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[0].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[0].timeframes.weekly.previous}hrs</p> 
+                </section>				
+                
+                <section class="Play">
+                    <p><font size='4' face="Verdana">${time[1].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[1].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[1].timeframes.weekly.previous}hrs</p> 
+                </section>	
+
+                <section class="Study">
+                    <p><font size='4' face="Verdana">${time[2].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[2].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[2].timeframes.weekly.previous}hrs</p> 
+            
+                </section>	
+                
+                <section class="Exercise">
+                    <p><font size='4' face="Verdana">${time[3].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[3].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[3].timeframes.weekly.previous}hrs</p> 
+                </section>	
+
+                <section class="Social">
+                    <p><font size='4' face="Verdana">${time[4].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[4].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[4].timeframes.weekly.previous}hrs</p> 
+                </section>	
+                
+                <section class="SelfCare">
+                    <p><font size='4' face="Verdana">${time[5].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[5].timeframes.weekly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Week - ${time[5].timeframes.weekly.previous}hrs</p> 
+                </section>
+                <br/><br/><br/><br/>
+                <hr/> 
+                <p id="header">Mentoria Conquiste Sua Vaga - Turma22 - Desafio 01<br> 
+                    Todos Direitos Reservados - 2023</p>
+            `
+            }
+            return  
+            };
+            xmlhttp.open("GET", "./json/time.json", true);
+            xmlhttp.send();        
+    }
+
+
+
+       // Mostra Resultados Semanais //
+       function show_monthly(){
+        var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var time = JSON.parse(this.responseText);   
+                
+                document.getElementById("demo").innerHTML = `
+
+                <section class="Work">
+                    <p><font size='4' face="Verdana">${time[0].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[0].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[0].timeframes.monthly.previous}hrs</p> 
+                </section>				
+                
+                <section class="Play">
+                    <p><font size='4' face="Verdana">${time[1].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[1].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[1].timeframes.monthly.previous}hrs</p> 
+                </section>	
+
+                <section class="Study">
+                    <p><font size='4' face="Verdana">${time[2].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[2].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[2].timeframes.monthly.previous}hrs</p> 
+            
+                </section>	
+                
+                <section class="Exercise">
+                    <p><font size='4' face="Verdana">${time[3].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[3].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[3].timeframes.monthly.previous}hrs</p> 
+                </section>	
+
+                <section class="Social">
+                    <p><font size='4' face="Verdana">${time[4].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[4].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[4].timeframes.monthly.previous}hrs</p> 
+                </section>	
+                
+                <section class="SelfCare">
+                    <p><font size='4' face="Verdana">${time[5].title}<br></p><br/> 
+                    <p><font size='6' face="Verdana">${time[5].timeframes.monthly.current}hrs</p> 
+                    <p><font size='2' face="Verdana">Last Month - ${time[5].timeframes.monthly.previous}hrs</p> 
+                </section>
+                <br/><br/><br/><br/>
+                <hr/> 
+                <p id="header">Mentoria Conquiste Sua Vaga - Turma22 - Desafio 01<br> 
+                    Todos Direitos Reservados - 2023</p>
+            `
+            }
+            return  
+            };
+            xmlhttp.open("GET", "./json/time.json", true);
+            xmlhttp.send();        
+    }
+
+</script>

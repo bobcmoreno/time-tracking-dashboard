@@ -3,16 +3,154 @@
     padding: 0;
     box-sizing: border-box;
 }
-h2{
+
+
+header{
     font-size: 24px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
     color: white;
     margin:  20;
     padding: 20;
     box-sizing: border-box;
     text-align: center;
+    margin-top: 21px;
 }
+
 body {
     background-color: #0B0719;
   }
-  
+
+.Avatar{
+    display: inline-block;
+    width: 230px;
+    min-height: 250px;
+    background-color:rgb(91, 91, 230);
+    text-align: left;
+    padding:30px ;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.Work{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:40px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 52px;
+    margin-left: 40px;
+    background-image: url(/img/WorkTeste.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.Play{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:55px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-left: 40px;
+    background-image: url(/img/Play.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.Study{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:55px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-left: 40px;
+    background-image: url(/img/Study.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+
+.Exercise{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:55px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-left: 40px;
+    background-image: url(/img/Exercise.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.Social{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:55px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-left: 40px;
+    background-image: url(/img/Social.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.SelfCare{
+    display: inline-block;
+    width: 200px;
+    min-height: 250px;
+    text-align: center;
+    padding:55px 20px;
+    color:white;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-left: 40px;
+    background-image: url(/img/SelfCare.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+#Foto_Avatar img {
+    border-radius: 110px;
+    width: 60px;;
+    border: 2px solid #ddd;
+}
+
+#Report_For {
+    margin-top: 15px
+}
+
+#demo{
+   display: contents;
+   color:white;
+   text-align: center;
+ }
+
+ #header{
+    margin-top: 08px;
+    font-size: 16px;
+  }
