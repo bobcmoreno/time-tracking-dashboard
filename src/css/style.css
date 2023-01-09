@@ -2,6 +2,7 @@
     margin:  0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 
@@ -154,3 +155,17 @@ body {
     margin-top: 08px;
     font-size: 16px;
   }
+
+#formata_botão{
+    background-color:rgb(91, 91, 230); 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+    padding:1px;
+    color:rgb(12, 5, 204);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(236, 228, 10);"
+}

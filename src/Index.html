@@ -8,8 +8,9 @@
 		<meta charset="utf-8"/>
 	</head>
 
-    <body onload="show_daily()">
-		<header>
+    <body onload="show_daily()">  
+  
+        <header>
 			<div class="Titulo">
                 <hr>
 				<h2><br>Time Tracking Dashboard</h2>
@@ -26,44 +27,12 @@
                 <p><font size='5'face="Verdana">Bob Moreno</p><br>
             </div>
 
-            <button style="background-color:rgb(91, 91, 230); 
-                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                    font-size: 18px;
-                    width: 100px;
-                    text-align: center;
-                    padding:1px;
-                    color:rgb(12, 5, 204);
-                    border-radius: 10px;
-                    border: none;
-                    background-color: rgb(236, 228, 10);"
-                    onclick="show_daily()">Daily</button><br> 
-                    
-
-            <button style="background-color:rgb(148, 225, 14); 
-                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                    font-size: 18px;
-                    width: 100px;
-                    text-align: center;
-                    padding:1px;
-                    color:rgb(12, 5, 204);
-                    border-radius: 10px;
-                    border: none;
-                    background-color: rgb(236, 228, 10);"
-                    onclick="show_weekly()">Weekly</button><br> 
-
-            <button style="background-color:rgb(91, 91, 230); 
-                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                    font-size: 18px;
-                    width: 100px;
-                    text-align: center;
-                    padding:1px;
-                    color:rgb(12, 5, 204);
-                    border-radius: 10px;
-                    border: none;
-                    background-color: rgb(236, 228, 10);"
-                    onclick="show_monthly()">Monthly</button><br> 
+            <button id="formata_botão" onclick="show_daily()">Daily</button><br> 
+            <button id="formata_botão" onclick="show_weekly()">Weekly</button><br> 
+            <button id="formata_botão" onclick="show_monthly()">Monthly</button><br> 
       
         </section>	
+
         <p id="demo"></p>
 
     </body>
@@ -72,7 +41,7 @@
 
 <!--   Funções para Montagem do Dashboard por Periodicidade -->
 <script>
-    // Mostra Resultados Conforme o index passado (1-Daily 2-Weekly 3-Monthly) //
+    // Mostra Resultados Diários //
     function show_daily(){
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -137,14 +106,14 @@
                 var time = JSON.parse(this.responseText);   
                 
                 document.getElementById("demo").innerHTML = `
-
-                <section class="Work">
+                
+                <section class=${time[0].title}>
                     <p><font size='4' face="Verdana">${time[0].title}<br></p><br/> 
                     <p><font size='6' face="Verdana">${time[0].timeframes.weekly.current}hrs</p> 
                     <p><font size='2' face="Verdana">Last Week - ${time[0].timeframes.weekly.previous}hrs</p> 
                 </section>				
                 
-                <section class="Play">
+                <section class=${time[1].title}>
                     <p><font size='4' face="Verdana">${time[1].title}<br></p><br/> 
                     <p><font size='6' face="Verdana">${time[1].timeframes.weekly.current}hrs</p> 
                     <p><font size='2' face="Verdana">Last Week - ${time[1].timeframes.weekly.previous}hrs</p> 
@@ -188,7 +157,7 @@
 
 
 
-       // Mostra Resultados Semanais //
+       // Mostra Resultados Mensais //
        function show_monthly(){
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -244,5 +213,4 @@
             xmlhttp.open("GET", "./json/time.json", true);
             xmlhttp.send();        
     }
-
 </script>
